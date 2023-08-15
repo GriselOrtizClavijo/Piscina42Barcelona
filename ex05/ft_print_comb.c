@@ -1,44 +1,30 @@
 #include <unistd.h>
-/*#include <stdio.h>*/
 
-void ft_print_comb(void){
-
-	int numA;
-
-	numA	= 0;
-	
-		while(numA <= 98){
-		int numB = numA + 1;
-
-			while(numB <=99){
-			char numA_str[3];
-			char numB_str[3];
-
-		sprintf(numA_str, "%02d", numA);
-		sprintf(numB_str, "%02d", numB);
-
-
-		write(1,numA_str, 2);
-		write(1," ", 1);
-		write(1,numB_str, 2);
-
-		if(numA != 98 || numB != 99){
-			write(1,", ", 2);
-
-			}
-		numB++;
-
-		}
-		numA++;	
-	}
-	write(1,"\n", 1);
-
-}
-
-/*
-int main()
+void ft_print_comb(void)
 {
-    ft_print_comb();
+    int num1 = 0;
 
-    return 0;
-}*/
+    while (num1 <= 9) {
+        int num2 = num1 + 1;
+
+        while (num2 <= 9) {
+            int num3 = num2 + 1;
+
+            while (num3 <= 9) {
+                printf("%d%d%d", num1, num2, num3);
+
+                if (num1 != 7 || num2 != 8 || num3 != 9) {
+                    printf(", ");
+                }
+
+                num3++;
+            }
+
+            num2++;
+        }
+
+        num1++;
+    }
+
+    printf("\n");
+}
