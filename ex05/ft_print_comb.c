@@ -4,17 +4,23 @@ void ft_print_comb(void)
 {
     int num1 = 0;
 
-    while (num1 <= 9) {
+    while (num1 <= 7) {
         int num2 = num1 + 1;
 
-        while (num2 <= 9) {
+        while (num2 <= 8) {
             int num3 = num2 + 1;
 
             while (num3 <= 9) {
-                printf("%d%d%d", num1, num2, num3);
+                char output[8];
+                snprintf(output, sizeof(output), "%d%d%d", num1, num2, num3);
 
-                if (num1 != 7 || num2 != 8 || num3 != 9) {
-                    printf(", ");
+                write(1, output, 3);
+
+                if (!(num1 == 7 && num2 == 8 && num3 == 9)) {
+                    char comma = ',';
+                    char space = ' ';
+                    write(1, &comma, 1);
+                    write(1, &space, 1);
                 }
 
                 num3++;
@@ -26,5 +32,6 @@ void ft_print_comb(void)
         num1++;
     }
 
-    printf("\n");
+    char newline = '\n';
+    write(1, &newline, 1);
 }
