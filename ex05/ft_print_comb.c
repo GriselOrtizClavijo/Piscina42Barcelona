@@ -1,51 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_comb2.c                                   :+:      :+:    :+:   */
+/*   ft_print_comb.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gortiz-c <gortiz-c@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/16 18:20:28 by gortiz-c          #+#    #+#             */
-/*   Updated: 2023/08/16 18:24:20 by gortiz-c         ###   ########.fr       */
+/*   Created: 2023/08/16 18:04:11 by gortiz-c          #+#    #+#             */
+/*   Updated: 2023/08/17 16:25:15 by gortiz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-/*#include <stdio.h>*/
 
-void	ft_print_comb2(void)
+void	ft_print_comb(void)
 {
-	int	i;	
-	int	j;
+	int	num1;
+	int	num2;
+	int	num3;
+	char	output[8];
 
-	i = 0;
-	j = 0
-		while (i <= 99)
+	num1 = 0;
+	while (num1 <= 7)
 	{
-		while (j <= 99)
-	{
-		char output[8]; // Para almacenar el formato de impresión
-				snprintf(output, sizeof(output), "%02d %02d", i, j);
-				write(1, output, sizeof(output) - 1);
-				if (i != 99 || j != 99){
+		num2 = num1 + 1;
+		while (num2 <= 8)
+		{
+			num3 = num2 + 1;
+			while (num3 <= 9)
+			{
+				snprintf(output, sizeof(output), "%d%d%d", num1, num2, num3);
+				write(1, output, 3);
+				if (!(num1 == 7 && num2 == 8 && num3 == 9)){
 					char comma = ',';
 					char space = ' ';
 					write(1, &comma, 1);
-					write(1, &space, 1);
-				}
-				j++;
-			}
-			i++;
-			j = 0;
-		}
-	char newline = '\n';
+					write(1, &space, 1);}
+				num3++;}
+			num2++;}
+		num1++;}
+	char newline;
+	newline = '\n';
 	write(1, &newline, 1);
 }
-
-/*
-   int main()
-   {
-   ft_print_comb();
-
-   return 0;
-   }*/
